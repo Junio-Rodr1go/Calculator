@@ -28,19 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
             if (result.innerHTML.length > 22) return
  
             //Parentesis
-            if ((caracter == '(' && result.innerHTML == '') || (caracter == '(' && ultimoCaracter() == '(')) {
+            if ((caracter == '(' && result.innerHTML == '') || (caracter == '(' && ultimoCaracter() == '(')  || (caracter== '(' && EUmOperador(ultimoCaracter()))) {
                 PtsAbrts++
                 quantPonto = 0
                 addCaracter(caracter)
             }
 
-            if (caracter == '(' && ultimoCaracter() == ')' || caracter == '(' && !isNaN(ultimoCaracter())) {
+            if ((caracter == '(' && ultimoCaracter() == ')') || (caracter == '(' && !isNaN(ultimoCaracter()))) {
                 PtsAbrts++
                 quantPonto = 0
                 addCaracter('*(')
             }
 
-            if (caracter == ')' && PtsAbrts > 0 && !operators.includes(ultimoCaracter()) || (caracter == ')' && PtsAbrts > 0 && !isNaN(ultimoCaracter()))) {
+            if (caracter == ')' && PtsAbrts > 0 && !operators.includes(ultimoCaracter()) && ultimoCaracter() == ')' || (caracter == ')' && PtsAbrts > 0 && !isNaN(ultimoCaracter())) ) {
                 PtsAbrts--
                 addCaracter(caracter)
             }
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Here still is to be able type a dot, but after any other number than zero.
-            if (caracter == '.' && quantPonto == 0) {
+            if (caracter == '.' && quantPonto == 0 && ultimoCaracter() != ')') {
                 quantPonto++
                 addCaracter(caracter)
             }
