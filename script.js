@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // To limit the caracters
             if (result.innerHTML.length > 22) return
- 
+
             //Parentesis
-            if ((caracter == '(' && result.innerHTML == '') || (caracter == '(' && ultimoCaracter() == '(')  || (caracter== '(' && EUmOperador(ultimoCaracter()))) {
+            if ((caracter == '(' && result.innerHTML == '') || (caracter == '(' && ultimoCaracter() == '(') || (caracter == '(' && EUmOperador(ultimoCaracter()))) {
                 PtsAbrts++
                 quantPonto = 0
                 addCaracter(caracter)
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 addCaracter('*(')
             }
 
-            if (caracter == ')' && PtsAbrts > 0 && !operators.includes(ultimoCaracter()) && ultimoCaracter() == ')' || (caracter == ')' && PtsAbrts > 0 && !isNaN(ultimoCaracter())) ) {
+            if (caracter == ')' && PtsAbrts > 0 && !operators.includes(ultimoCaracter()) && ultimoCaracter() == ')' || (caracter == ')' && PtsAbrts > 0 && !isNaN(ultimoCaracter()))) {
                 PtsAbrts--
                 addCaracter(caracter)
             }
@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (result.innerHTML !== "") result.innerHTML = eval(result.innerHTML)
+        PtsAbrts = 0
     };
     // This one is to delete just a single character.
     backSpace.onclick = () => {
